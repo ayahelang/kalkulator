@@ -33,7 +33,45 @@ export function renderCalculator(id, container, playClick) {
     'percentage-business': renderMargin,
     'unit-converter': renderUnitConverter,
     'date-diff': renderDateDiff,
-    age: renderAge
+    age: renderAge,
+    // new
+    fraction: renderFraction,
+    random: renderRandom,
+    average: renderAverage,
+    bsa: renderBSA,
+    ibw: renderIBW,
+    pregnancy: renderPregnancy,
+    'heart-rate': renderHeartRate,
+    creatinine: renderCreatinine,
+    'cidr-convert': renderCIDRConvert,
+    bandwidth: renderBandwidth,
+    binary: renderBinary,
+    wildcard: renderWildcard,
+    'data-size': renderDataSize,
+    'series-parallel': renderSeriesParallel,
+    'capacitor-energy': renderCapEnergy,
+    'lc-resonance': renderLC,
+    'speed-rpm': renderSpeedRPM,
+    'tire-size': renderTireSize,
+    compression: renderCompression,
+    'engine-disp': renderEngineDisp,
+    force: renderForce,
+    energy: renderEnergy,
+    momentum: renderMomentum,
+    'work-power': renderWorkPower,
+    density: renderDensity,
+    wave: renderWave,
+    escape: renderEscape,
+    hohmann: renderHohmann,
+    'simple-interest': renderSimpleInterest,
+    discount: renderDiscount,
+    salary: renderSalary,
+    inflation: renderInflation,
+    'cac-clv': renderCACCLV,
+    concrete: renderConcrete,
+    'area-volume': renderAreaVolume,
+    pythagoras: renderPythagoras,
+    slope: renderSlope
   };
 
   const fn = map[id] || (() => {
@@ -964,6 +1002,683 @@ function renderAge(el, play) {
     out.innerHTML = `<div class="value">${y} tahun, ${m} bulan, ${d} hari</div>`;
   };
 }
+
+
+/* ========== NEW CALCULATORS ========== */
+function renderFraction(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'frN1', label: 'Pembilang 1', placeholder: '1' },
+    { id: 'frD1', label: 'Penyebut 1', placeholder: '2' },
+    { id: 'frOp', label: 'Operasi', type: 'select', options: [['+','+'],['-','−'],['*','×'],['/','÷']] },
+    { id: 'frN2', label: 'Pembilang 2', placeholder: '1' },
+    { id: 'frD2', label: 'Penyebut 2', placeholder: '3' }
+  ], 'Hitung') + `<div class="result-box" id="frOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const n1 = +el.querySelector('#frN1').value, d1 = +el.querySelector('#frD1').value;
+    const n2 = +el.querySelector('#frN2').value, d2 = +el.querySelector('#frD2').value;
+    const op = el.querySelector('#frOp').value;
+    if (!d1 || !d2) return;
+    let rn, rd;
+    if (op === '+') { rn = n1*d2 + n2*d1; rd = d1*d2; }
+    else if (op === '-') { rn = n1*d2 - n2*d1; rd = d1*d2; }
+    else if (op === '*') { rn = n1*n2; rd = d1*d2; }
+    else { rn = n1*d2; rd = d1*n2; }
+    const g = gcd(Math.abs(rn), Math.abs(rd));
+    rn /= g; rd /= g;
+    const out = el.querySelector('#frOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${rn}/${rd}</div><div class="detail">≈ ${fmt(rn/rd)}</div>`;
+  };
+  function gcd(a,b){ return b ? gcd(b, a%b) : a; }
+}
+
+function renderRandom(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'rnMin', label: 'Minimum', placeholder: '1' },
+    { id: 'rnMax', label: 'Maximum', placeholder: '100' },
+    { id: 'rnCount', label: 'Jumlah angka', placeholder: '1' }
+  ], 'Generate') + `<div class="result-box" id="rnOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const min = +el.querySelector('#rnMin').value;
+    const max = +el.querySelector('#rnMax').value;
+    const count = Math.min(+el.querySelector('#rnCount').value || 1, 50);
+    if (min > max) return;
+    const nums = Array.from({length: count}, () => Math.floor(Math.random() * (max - min + 1)) + min);
+    const out = el.querySelector('#rnOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value" style="font-size:1.2rem;word-break:break-all">${nums.join(', ')}</div>`;
+  };
+}
+
+function renderAverage(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'avData', label: 'Data (pisahkan koma)', placeholder: '10,20,30,40,50' }
+  ], 'Hitung') + `<div class="result-box" id="avOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const arr = el.querySelector('#avData').value.split(',').map(s => +s.trim()).filter(n => !isNaN(n));
+    if (!arr.length) return;
+    const n = arr.length;
+    const mean = arr.reduce((a,b) => a+b, 0) / n;
+    const sorted = [...arr].sort((a,b) => a-b);
+    const med = n % 2 ? sorted[Math.floor(n/2)] : (sorted[n/2-1] + sorted[n/2]) / 2;
+    const variance = arr.reduce((a,b) => a + (b-mean)**2, 0) / n;
+    const sd = Math.sqrt(variance);
+    const out = el.querySelector('#avOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Mean: <strong>${fmt(mean)}</strong><br>Median: <strong>${fmt(med)}</strong><br>Std Dev: <strong>${fmt(sd)}</strong><br>Min: ${fmt(Math.min(...arr))} · Max: ${fmt(Math.max(...arr))}</div>`;
+  };
+}
+
+function renderBSA(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'bsaH', label: 'Tinggi (cm)', placeholder: '170' },
+    { id: 'bsaW', label: 'Berat (kg)', placeholder: '70' }
+  ], 'Hitung BSA') + `<div class="result-box" id="bsaOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const h = +el.querySelector('#bsaH').value, w = +el.querySelector('#bsaW').value;
+    if (!h || !w) return;
+    const bsa = Math.sqrt(h * w / 3600);
+    const out = el.querySelector('#bsaOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">BSA (Mosteller)</div><div class="value">${bsa.toFixed(3)} m²</div>`;
+  };
+}
+
+function renderIBW(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'ibwH', label: 'Tinggi (cm)', placeholder: '170' },
+    { id: 'ibwSex', label: 'Jenis Kelamin', type: 'select', options: [['m','Laki-laki'],['f','Perempuan']] }
+  ], 'Hitung IBW') + `<div class="result-box" id="ibwOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const h = +el.querySelector('#ibwH').value;
+    const sex = el.querySelector('#ibwSex').value;
+    if (!h) return;
+    const inches = h / 2.54;
+    const ibw = sex === 'm' ? 50 + 2.3 * (inches - 60) : 45.5 + 2.3 * (inches - 60);
+    const out = el.querySelector('#ibwOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Ideal Body Weight</div><div class="value">${fmt(ibw)} kg</div>`;
+  };
+}
+
+function renderPregnancy(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'prLMP', label: 'Hari Pertama Haid Terakhir (LMP)', type: 'date' }
+  ], 'Hitung') + `<div class="result-box" id="prOut2" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const lmp = new Date(el.querySelector('#prLMP').value);
+    if (isNaN(lmp)) return;
+    const due = new Date(lmp); due.setDate(due.getDate() + 280);
+    const now = new Date();
+    const days = Math.floor((now - lmp) / 86400000);
+    const weeks = Math.floor(days / 7);
+    const rem = days % 7;
+    const out = el.querySelector('#prOut2');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Usia kehamilan: <strong>${weeks} minggu ${rem} hari</strong><br>Perkiraan lahir (EDD): <strong>${due.toLocaleDateString('id-ID')}</strong></div>`;
+  };
+}
+
+function renderHeartRate(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'hrAge', label: 'Usia', placeholder: '30' },
+    { id: 'hrRest', label: 'Denyut istirahat (opsional)', placeholder: '70' }
+  ], 'Hitung Zona') + `<div class="result-box" id="hrOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const age = +el.querySelector('#hrAge').value;
+    const rest = +el.querySelector('#hrRest').value || 60;
+    if (!age) return;
+    const max = 220 - age;
+    const out = el.querySelector('#hrOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">
+      Max HR: <strong>${max} bpm</strong><br>
+      Zona Fat Burn (50-70%): <strong>${Math.round(max*0.5)}–${Math.round(max*0.7)}</strong><br>
+      Zona Cardio (70-85%): <strong>${Math.round(max*0.7)}–${Math.round(max*0.85)}</strong><br>
+      Zona Peak (85-95%): <strong>${Math.round(max*0.85)}–${Math.round(max*0.95)}</strong>
+    </div>`;
+  };
+}
+
+function renderCreatinine(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'crAge', label: 'Usia', placeholder: '45' },
+    { id: 'crSex', label: 'Jenis Kelamin', type: 'select', options: [['m','Laki-laki'],['f','Perempuan']] },
+    { id: 'crW', label: 'Berat (kg)', placeholder: '70' },
+    { id: 'crScr', label: 'Serum Creatinine (mg/dL)', placeholder: '1.0' }
+  ], 'Hitung CrCl') + `<div class="result-box" id="crOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const age = +el.querySelector('#crAge').value, sex = el.querySelector('#crSex').value;
+    const w = +el.querySelector('#crW').value, scr = +el.querySelector('#crScr').value;
+    if (!age || !w || !scr) return;
+    let crcl = ((140 - age) * w) / (72 * scr);
+    if (sex === 'f') crcl *= 0.85;
+    const out = el.querySelector('#crOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Creatinine Clearance</div><div class="value">${fmt(crcl)} mL/min</div>`;
+  };
+}
+
+function renderCIDRConvert(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'ccCIDR', label: 'CIDR Prefix (0-32)', placeholder: '24' }
+  ], 'Konversi') + `<div class="result-box" id="ccOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const cidr = +el.querySelector('#ccCIDR').value;
+    if (cidr < 0 || cidr > 32) return;
+    const mask = cidr === 0 ? 0 : (~0 << (32 - cidr)) >>> 0;
+    const str = [24,16,8,0].map(s => (mask >>> s) & 255).join('.');
+    const hosts = cidr >= 31 ? (cidr === 32 ? 1 : 2) : 2**(32-cidr) - 2;
+    const out = el.querySelector('#ccOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Subnet Mask: <strong>${str}</strong><br>Wildcard: <strong>${[24,16,8,0].map(s => (~mask >>> s) & 255).join('.')}</strong><br>Usable Hosts: <strong>${hosts}</strong></div>`;
+  };
+}
+
+function renderBandwidth(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'bwUsers', label: 'Jumlah user simultan', placeholder: '50' },
+    { id: 'bwPer', label: 'Bandwidth per user (Mbps)', placeholder: '2' },
+    { id: 'bwOver', label: 'Oversubscription ratio', placeholder: '4' }
+  ], 'Hitung') + `<div class="result-box" id="bwOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const users = +el.querySelector('#bwUsers').value;
+    const per = +el.querySelector('#bwPer').value;
+    const over = +el.querySelector('#bwOver').value || 1;
+    if (!users || !per) return;
+    const total = (users * per) / over;
+    const out = el.querySelector('#bwOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Bandwidth dibutuhkan</div><div class="value">${fmt(total)} Mbps</div>`;
+  };
+}
+
+function renderBinary(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'binVal', label: 'Nilai', placeholder: '255' },
+    { id: 'binFrom', label: 'Dari', type: 'select', options: [['dec','Decimal'],['bin','Binary'],['hex','Hex']] }
+  ], 'Konversi') + `<div class="result-box" id="binOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const val = el.querySelector('#binVal').value.trim();
+    const from = el.querySelector('#binFrom').value;
+    let n;
+    try {
+      if (from === 'dec') n = parseInt(val, 10);
+      else if (from === 'bin') n = parseInt(val, 2);
+      else n = parseInt(val, 16);
+      if (isNaN(n)) throw 0;
+    } catch { return; }
+    const out = el.querySelector('#binOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Decimal: <strong>${n}</strong><br>Binary: <strong>${n.toString(2)}</strong><br>Hex: <strong>${n.toString(16).toUpperCase()}</strong></div>`;
+  };
+}
+
+function renderWildcard(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'wcCIDR', label: 'CIDR / Prefix', placeholder: '24' }
+  ], 'Hitung Wildcard') + `<div class="result-box" id="wcOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const cidr = +el.querySelector('#wcCIDR').value;
+    if (cidr < 0 || cidr > 32) return;
+    const mask = cidr === 0 ? 0 : (~0 << (32 - cidr)) >>> 0;
+    const wild = (~mask) >>> 0;
+    const str = [24,16,8,0].map(s => (wild >>> s) & 255).join('.');
+    const out = el.querySelector('#wcOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${str}</div>`;
+  };
+}
+
+function renderDataSize(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'dsVal', label: 'Nilai', placeholder: '1' },
+    { id: 'dsFrom', label: 'Dari', type: 'select', options: [['B','Byte'],['KB','KB'],['MB','MB'],['GB','GB'],['TB','TB']] },
+    { id: 'dsTo', label: 'Ke', type: 'select', options: [['B','Byte'],['KB','KB'],['MB','MB'],['GB','GB'],['TB','TB']] }
+  ], 'Konversi') + `<div class="result-box" id="dsOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const factors = { B:1, KB:1024, MB:1024**2, GB:1024**3, TB:1024**4 };
+    const val = +el.querySelector('#dsVal').value;
+    const from = el.querySelector('#dsFrom').value;
+    const to = el.querySelector('#dsTo').value;
+    const result = val * factors[from] / factors[to];
+    const out = el.querySelector('#dsOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(result)} ${to}</div>`;
+  };
+}
+
+function renderSeriesParallel(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'spVals', label: 'Nilai resistor (Ω, pisahkan koma)', placeholder: '100,220,330' },
+    { id: 'spType', label: 'Susunan', type: 'select', options: [['series','Seri'],['parallel','Paralel']] }
+  ], 'Hitung') + `<div class="result-box" id="spOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const vals = el.querySelector('#spVals').value.split(',').map(s => +s.trim()).filter(n => n > 0);
+    const type = el.querySelector('#spType').value;
+    if (!vals.length) return;
+    let r;
+    if (type === 'series') r = vals.reduce((a,b) => a+b, 0);
+    else r = 1 / vals.reduce((a,b) => a + 1/b, 0);
+    const out = el.querySelector('#spOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">R total</div><div class="value">${fmtOhm(r)}</div>`;
+  };
+}
+
+function renderCapEnergy(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'ceC', label: 'Kapasitansi (µF)', placeholder: '100' },
+    { id: 'ceV', label: 'Tegangan (V)', placeholder: '12' }
+  ], 'Hitung') + `<div class="result-box" id="ceOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const c = +el.querySelector('#ceC').value * 1e-6;
+    const v = +el.querySelector('#ceV').value;
+    if (!c || !v) return;
+    const e = 0.5 * c * v * v;
+    const out = el.querySelector('#ceOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Energi</div><div class="value">${fmt(e)} J</div><div class="detail">${fmt(e*1000)} mJ</div>`;
+  };
+}
+
+function renderLC(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'lcL', label: 'Induktansi L (mH)', placeholder: '10' },
+    { id: 'lcC', label: 'Kapasitansi C (µF)', placeholder: '100' }
+  ], 'Hitung f₀') + `<div class="result-box" id="lcOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const L = +el.querySelector('#lcL').value * 1e-3;
+    const C = +el.querySelector('#lcC').value * 1e-6;
+    if (!L || !C) return;
+    const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
+    const out = el.querySelector('#lcOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Frekuensi Resonansi</div><div class="value">${fmt(f)} Hz</div>`;
+  };
+}
+
+function renderSpeedRPM(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'srRPM', label: 'RPM mesin', placeholder: '3000' },
+    { id: 'srGear', label: 'Gear ratio (transmisi × final)', placeholder: '4.0' },
+    { id: 'srTire', label: 'Diameter ban (inch)', placeholder: '25' }
+  ], 'Hitung Speed') + `<div class="result-box" id="srOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const rpm = +el.querySelector('#srRPM').value;
+    const gear = +el.querySelector('#srGear').value;
+    const tire = +el.querySelector('#srTire').value;
+    if (!rpm || !gear || !tire) return;
+    const mph = (rpm * tire) / (gear * 336);
+    const kph = mph * 1.60934;
+    const out = el.querySelector('#srOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(kph)} km/h</div><div class="detail">${fmt(mph)} mph</div>`;
+  };
+}
+
+function renderTireSize(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'tsW', label: 'Lebar (mm)', placeholder: '205' },
+    { id: 'tsAR', label: 'Aspect Ratio (%)', placeholder: '55' },
+    { id: 'tsR', label: 'Rim (inch)', placeholder: '16' }
+  ], 'Hitung') + `<div class="result-box" id="tsOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const w = +el.querySelector('#tsW').value;
+    const ar = +el.querySelector('#tsAR').value;
+    const r = +el.querySelector('#tsR').value;
+    if (!w || !ar || !r) return;
+    const sidewall = w * (ar/100);
+    const diam = (sidewall * 2 / 25.4) + r;
+    const circ = diam * Math.PI;
+    const out = el.querySelector('#tsOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Diameter: <strong>${fmt(diam)} inch</strong> (${fmt(diam*25.4)} mm)<br>Circumference: <strong>${fmt(circ)} inch</strong><br>Revs/mile: <strong>${fmt(63360/circ)}</strong></div>`;
+  };
+}
+
+function renderCompression(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'crVd', label: 'Displacement volume (cc)', placeholder: '500' },
+    { id: 'crVc', label: 'Clearance volume (cc)', placeholder: '50' }
+  ], 'Hitung CR') + `<div class="result-box" id="cr2Out" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const vd = +el.querySelector('#crVd').value;
+    const vc = +el.querySelector('#crVc').value;
+    if (!vd || !vc) return;
+    const cr = (vd + vc) / vc;
+    const out = el.querySelector('#cr2Out');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Compression Ratio</div><div class="value">${cr.toFixed(2)} : 1</div>`;
+  };
+}
+
+function renderEngineDisp(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'edBore', label: 'Bore (mm)', placeholder: '86' },
+    { id: 'edStroke', label: 'Stroke (mm)', placeholder: '86' },
+    { id: 'edCyl', label: 'Jumlah silinder', placeholder: '4' }
+  ], 'Hitung') + `<div class="result-box" id="edOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const bore = +el.querySelector('#edBore').value;
+    const stroke = +el.querySelector('#edStroke').value;
+    const cyl = +el.querySelector('#edCyl').value;
+    if (!bore || !stroke || !cyl) return;
+    const cc = Math.PI * (bore/2)**2 * stroke * cyl / 1000;
+    const out = el.querySelector('#edOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Displacement</div><div class="value">${fmt(cc)} cc</div><div class="detail">${fmt(cc/1000)} L</div>`;
+  };
+}
+
+function renderForce(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'foM', label: 'Massa (kg)', placeholder: '10' },
+    { id: 'foA', label: 'Percepatan (m/s²)', placeholder: '9.81' }
+  ], 'Hitung F') + `<div class="result-box" id="foOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const m = +el.querySelector('#foM').value, a = +el.querySelector('#foA').value;
+    if (!m || a === undefined) return;
+    const out = el.querySelector('#foOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(m*a)} N</div>`;
+  };
+}
+
+function renderEnergy(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'enM', label: 'Massa (kg)', placeholder: '10' },
+    { id: 'enV', label: 'Kecepatan (m/s)', placeholder: '5' },
+    { id: 'enH', label: 'Ketinggian (m)', placeholder: '10' }
+  ], 'Hitung') + `<div class="result-box" id="enOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const m = +el.querySelector('#enM').value, v = +el.querySelector('#enV').value, h = +el.querySelector('#enH').value;
+    const ke = 0.5 * m * v * v;
+    const pe = m * 9.81 * h;
+    const out = el.querySelector('#enOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Kinetic: <strong>${fmt(ke)} J</strong><br>Potential: <strong>${fmt(pe)} J</strong><br>Total: <strong>${fmt(ke+pe)} J</strong></div>`;
+  };
+}
+
+function renderMomentum(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'moM', label: 'Massa (kg)', placeholder: '5' },
+    { id: 'moV', label: 'Kecepatan (m/s)', placeholder: '10' }
+  ], 'Hitung p') + `<div class="result-box" id="moOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const m = +el.querySelector('#moM').value, v = +el.querySelector('#moV').value;
+    const out = el.querySelector('#moOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(m*v)} kg·m/s</div>`;
+  };
+}
+
+function renderWorkPower(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'wpF', label: 'Gaya (N)', placeholder: '100' },
+    { id: 'wpD', label: 'Jarak (m)', placeholder: '5' },
+    { id: 'wpT', label: 'Waktu (s)', placeholder: '10' }
+  ], 'Hitung') + `<div class="result-box" id="wpOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const f = +el.querySelector('#wpF').value, d = +el.querySelector('#wpD').value, t = +el.querySelector('#wpT').value;
+    const work = f * d;
+    const power = t ? work / t : 0;
+    const out = el.querySelector('#wpOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Work: <strong>${fmt(work)} J</strong><br>Power: <strong>${fmt(power)} W</strong></div>`;
+  };
+}
+
+function renderDensity(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'deM', label: 'Massa (kg)', placeholder: '1' },
+    { id: 'deV', label: 'Volume (m³)', placeholder: '0.001' }
+  ], 'Hitung ρ') + `<div class="result-box" id="deOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const m = +el.querySelector('#deM').value, v = +el.querySelector('#deV').value;
+    if (!v) return;
+    const out = el.querySelector('#deOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(m/v)} kg/m³</div>`;
+  };
+}
+
+function renderWave(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'wvF', label: 'Frekuensi (Hz)', placeholder: '440' },
+    { id: 'wvL', label: 'Panjang gelombang (m)', placeholder: '0.78' }
+  ], 'Hitung v') + `<div class="result-box" id="wvOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const f = +el.querySelector('#wvF').value, l = +el.querySelector('#wvL').value;
+    const out = el.querySelector('#wvOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(f*l)} m/s</div>`;
+  };
+}
+
+function renderEscape(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'esM', label: 'Massa benda langit (kg)', placeholder: '5.972e24' },
+    { id: 'esR', label: 'Radius (m)', placeholder: '6.371e6' }
+  ], 'Hitung') + `<div class="result-box" id="esOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const M = +el.querySelector('#esM').value, R = +el.querySelector('#esR').value;
+    if (!M || !R) return;
+    const G = 6.67430e-11;
+    const v = Math.sqrt(2 * G * M / R);
+    const out = el.querySelector('#esOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(v)} m/s</div><div class="detail">${fmt(v/1000)} km/s</div>`;
+  };
+}
+
+function renderHohmann(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'hoR1', label: 'Radius orbit awal (km)', placeholder: '6771' },
+    { id: 'hoR2', label: 'Radius orbit target (km)', placeholder: '42164' },
+    { id: 'hoMu', label: 'μ (km³/s²)', placeholder: '398600' }
+  ], 'Hitung Δv') + `<div class="result-box" id="hoOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const r1 = +el.querySelector('#hoR1').value;
+    const r2 = +el.querySelector('#hoR2').value;
+    const mu = +el.querySelector('#hoMu').value;
+    if (!r1 || !r2 || !mu) return;
+    const a = (r1 + r2) / 2;
+    const v1 = Math.sqrt(mu / r1);
+    const v2 = Math.sqrt(mu / r2);
+    const vt1 = Math.sqrt(mu * (2/r1 - 1/a));
+    const vt2 = Math.sqrt(mu * (2/r2 - 1/a));
+    const dv1 = Math.abs(vt1 - v1);
+    const dv2 = Math.abs(v2 - vt2);
+    const out = el.querySelector('#hoOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Δv₁: <strong>${fmt(dv1)} km/s</strong><br>Δv₂: <strong>${fmt(dv2)} km/s</strong><br>Total: <strong>${fmt(dv1+dv2)} km/s</strong></div>`;
+  };
+}
+
+function renderSimpleInterest(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'siP', label: 'Pokok', placeholder: '10000000' },
+    { id: 'siR', label: 'Bunga / tahun (%)', placeholder: '5' },
+    { id: 'siT', label: 'Waktu (tahun)', placeholder: '3' }
+  ], 'Hitung') + `<div class="result-box" id="siOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const P = +el.querySelector('#siP').value, r = +el.querySelector('#siR').value/100, t = +el.querySelector('#siT').value;
+    const I = P * r * t;
+    const out = el.querySelector('#siOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Bunga: <strong>${fmt(I)}</strong><br>Total: <strong>${fmt(P+I)}</strong></div>`;
+  };
+}
+
+function renderDiscount(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'diPrice', label: 'Harga asli', placeholder: '150000' },
+    { id: 'diPct', label: 'Diskon (%)', placeholder: '20' }
+  ], 'Hitung') + `<div class="result-box" id="diOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const p = +el.querySelector('#diPrice').value, d = +el.querySelector('#diPct').value;
+    const save = p * d / 100;
+    const out = el.querySelector('#diOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Hemat: <strong>${fmt(save)}</strong><br>Harga akhir: <strong>${fmt(p-save)}</strong></div>`;
+  };
+}
+
+function renderSalary(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'saGross', label: 'Gaji kotor / bulan', placeholder: '10000000' },
+    { id: 'saTax', label: 'Pajak & potongan (%)', placeholder: '10' }
+  ], 'Hitung') + `<div class="result-box" id="saOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const g = +el.querySelector('#saGross').value, t = +el.querySelector('#saTax').value;
+    const net = g * (1 - t/100);
+    const out = el.querySelector('#saOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="label">Gaji bersih (est)</div><div class="value">${fmt(net)}</div>`;
+  };
+}
+
+function renderInflation(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'inAmt', label: 'Nilai sekarang', placeholder: '10000000' },
+    { id: 'inRate', label: 'Inflasi / tahun (%)', placeholder: '3' },
+    { id: 'inYears', label: 'Tahun ke depan', placeholder: '10' }
+  ], 'Hitung') + `<div class="result-box" id="inOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const amt = +el.querySelector('#inAmt').value, rate = +el.querySelector('#inRate').value/100, y = +el.querySelector('#inYears').value;
+    const future = amt * Math.pow(1+rate, y);
+    const purchasing = amt / Math.pow(1+rate, y);
+    const out = el.querySelector('#inOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Nilai setara masa depan: <strong>${fmt(future)}</strong><br>Daya beli ${y} thn lagi: <strong>${fmt(purchasing)}</strong></div>`;
+  };
+}
+
+function renderCACCLV(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'ccSpend', label: 'Total marketing spend', placeholder: '50000000' },
+    { id: 'ccCust', label: 'Pelanggan baru', placeholder: '200' },
+    { id: 'ccARPU', label: 'ARPU / bulan', placeholder: '150000' },
+    { id: 'ccMonths', label: 'Rata-rata bulan berlangganan', placeholder: '24' }
+  ], 'Hitung') + `<div class="result-box" id="ccOut2" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const spend = +el.querySelector('#ccSpend').value, cust = +el.querySelector('#ccCust').value;
+    const arpu = +el.querySelector('#ccARPU').value, months = +el.querySelector('#ccMonths').value;
+    if (!cust) return;
+    const cac = spend / cust;
+    const clv = arpu * months;
+    const out = el.querySelector('#ccOut2');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">CAC: <strong>${fmt(cac)}</strong><br>CLV: <strong>${fmt(clv)}</strong><br>CLV:CAC = <strong>${fmt(clv/cac)}</strong></div>`;
+  };
+}
+
+function renderConcrete(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'coL', label: 'Panjang (m)', placeholder: '5' },
+    { id: 'coW', label: 'Lebar (m)', placeholder: '4' },
+    { id: 'coH', label: 'Tebal (m)', placeholder: '0.12' }
+  ], 'Hitung Volume') + `<div class="result-box" id="coOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const l = +el.querySelector('#coL').value, w = +el.querySelector('#coW').value, h = +el.querySelector('#coH').value;
+    const vol = l * w * h;
+    const out = el.querySelector('#coOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(vol)} m³</div><div class="detail">≈ ${fmt(vol*1.05)} m³ (dengan waste 5%)</div>`;
+  };
+}
+
+function renderAreaVolume(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'avShape', label: 'Bangun', type: 'select', options: [['rect','Persegi panjang'],['circle','Lingkaran'],['box','Balok'],['cyl','Silinder']] },
+    { id: 'avA', label: 'a / panjang / jari-jari (m)', placeholder: '5' },
+    { id: 'avB', label: 'b / lebar / tinggi (m)', placeholder: '3' },
+    { id: 'avC', label: 'c / tinggi (balok, m)', placeholder: '2' }
+  ], 'Hitung') + `<div class="result-box" id="avOut2" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const shape = el.querySelector('#avShape').value;
+    const a = +el.querySelector('#avA').value, b = +el.querySelector('#avB').value, c = +el.querySelector('#avC').value;
+    let result = '';
+    if (shape === 'rect') result = `Luas: <strong>${fmt(a*b)} m²</strong>`;
+    else if (shape === 'circle') result = `Luas: <strong>${fmt(Math.PI*a*a)} m²</strong><br>Keliling: <strong>${fmt(2*Math.PI*a)} m</strong>`;
+    else if (shape === 'box') result = `Volume: <strong>${fmt(a*b*c)} m³</strong><br>Luas permukaan: <strong>${fmt(2*(a*b+b*c+a*c))} m²</strong>`;
+    else result = `Volume: <strong>${fmt(Math.PI*a*a*b)} m³</strong><br>Luas selimut: <strong>${fmt(2*Math.PI*a*b)} m²</strong>`;
+    const out = el.querySelector('#avOut2');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">${result}</div>`;
+  };
+}
+
+function renderPythagoras(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'pyA', label: 'Sisi a', placeholder: '3' },
+    { id: 'pyB', label: 'Sisi b', placeholder: '4' }
+  ], 'Hitung sisi miring') + `<div class="result-box" id="pyOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const a = +el.querySelector('#pyA').value, b = +el.querySelector('#pyB').value;
+    const c = Math.sqrt(a*a + b*b);
+    const out = el.querySelector('#pyOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="value">${fmt(c)}</div>`;
+  };
+}
+
+function renderSlope(el, play) {
+  el.innerHTML = formHTML([
+    { id: 'slRise', label: 'Rise (vertikal)', placeholder: '3' },
+    { id: 'slRun', label: 'Run (horizontal)', placeholder: '10' }
+  ], 'Hitung Slope') + `<div class="result-box" id="slOut" style="display:none"></div>`;
+  el.querySelector('.btn-calc').onclick = () => {
+    play();
+    const rise = +el.querySelector('#slRise').value, run = +el.querySelector('#slRun').value;
+    if (!run) return;
+    const slope = rise / run;
+    const angle = Math.atan(slope) * 180 / Math.PI;
+    const pct = slope * 100;
+    const out = el.querySelector('#slOut');
+    out.style.display = 'block';
+    out.innerHTML = `<div class="detail">Slope: <strong>${fmt(slope)}</strong><br>Angle: <strong>${fmt(angle)}°</strong><br>Grade: <strong>${fmt(pct)}%</strong></div>`;
+  };
+}
+
 
 /* ========== HELPERS ========== */
 function formHTML(fields, btnText) {
