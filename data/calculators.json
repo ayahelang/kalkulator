@@ -735,6 +735,550 @@
       "tags": [
         "slope"
       ]
+    },
+    {
+      "id": "tip",
+      "name": "Tip / Service Charge",
+      "category": "umum",
+      "desc": "Hitung tip & total bayar",
+      "icon": "🧾",
+      "tags": [
+        "tip",
+        "service"
+      ]
+    },
+    {
+      "id": "gpa",
+      "name": "GPA / IPK Calculator",
+      "category": "umum",
+      "desc": "Hitung IPK dari nilai & SKS",
+      "icon": "🎓",
+      "tags": [
+        "ipk",
+        "gpa"
+      ]
+    },
+    {
+      "id": "percentage-change",
+      "name": "Persentase Perubahan",
+      "category": "umum",
+      "desc": "Kenaikan/penurunan persen antar nilai",
+      "icon": "↕️",
+      "tags": [
+        "perubahan"
+      ]
+    },
+    {
+      "id": "ratio",
+      "name": "Rasio & Proporsi",
+      "category": "umum",
+      "desc": "Sederhanakan rasio & cari nilai proporsi",
+      "icon": "⚖️",
+      "tags": [
+        "rasio"
+      ]
+    },
+    {
+      "id": "quadratic",
+      "name": "Persamaan Kuadrat",
+      "category": "ilmiah",
+      "desc": "Akar persamaan ax²+bx+c=0",
+      "icon": "𝑥²",
+      "tags": [
+        "kuadrat"
+      ]
+    },
+    {
+      "id": "factorial",
+      "name": "Faktorial & Permutasi",
+      "category": "ilmiah",
+      "desc": "n!, nPr, nCr",
+      "icon": "!",
+      "tags": [
+        "faktorial",
+        "kombinasi"
+      ]
+    },
+    {
+      "id": "log-solver",
+      "name": "Log Solver",
+      "category": "ilmiah",
+      "desc": "log_b(a) dan antilog",
+      "icon": "㏒",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "id": "matrix-2x2",
+      "name": "Matrix 2×2",
+      "category": "ilmiah",
+      "desc": "Determinan, invers, perkalian 2×2",
+      "icon": "⊞",
+      "tags": [
+        "matrix"
+      ]
+    },
+    {
+      "id": "std-deviation",
+      "name": "Standar Deviasi",
+      "category": "ilmiah",
+      "desc": "Mean, variance, SD dari data",
+      "icon": "σ",
+      "tags": [
+        "statistik"
+      ]
+    },
+    {
+      "id": "complex",
+      "name": "Bilangan Kompleks",
+      "category": "ilmiah",
+      "desc": "Operasi a+bi sederhana",
+      "icon": "𝑖",
+      "tags": [
+        "kompleks"
+      ]
+    },
+    {
+      "id": "angle-convert",
+      "name": "Degree ↔ Radian",
+      "category": "ilmiah",
+      "desc": "Konversi sudut",
+      "icon": "∠",
+      "tags": [
+        "sudut"
+      ]
+    },
+    {
+      "id": "prime",
+      "name": "Prime Checker",
+      "category": "ilmiah",
+      "desc": "Cek bilangan prima & faktor",
+      "icon": "🔢",
+      "tags": [
+        "prima"
+      ]
+    },
+    {
+      "id": "modulo",
+      "name": "Modulo & Div",
+      "category": "ilmiah",
+      "desc": "Sisa bagi & hasil bagi",
+      "icon": "%",
+      "tags": [
+        "modulo"
+      ]
+    },
+    {
+      "id": "map",
+      "name": "Mean Arterial Pressure",
+      "category": "kesehatan",
+      "desc": "MAP dari sistolik & diastolik",
+      "icon": "🩸",
+      "tags": [
+        "tekanan"
+      ]
+    },
+    {
+      "id": "iv-drip",
+      "name": "IV Drip Rate",
+      "category": "kesehatan",
+      "desc": "Tetesan infus per menit",
+      "icon": "💉",
+      "tags": [
+        "infus"
+      ]
+    },
+    {
+      "id": "ideal-weight-range",
+      "name": "Rentang Berat Ideal",
+      "category": "kesehatan",
+      "desc": "Dari tinggi (BMI 18.5–24.9)",
+      "icon": "📐",
+      "tags": [
+        "berat"
+      ]
+    },
+    {
+      "id": "water-intake",
+      "name": "Kebutuhan Air",
+      "category": "kesehatan",
+      "desc": "Estimasi air minum harian",
+      "icon": "💧",
+      "tags": [
+        "air"
+      ]
+    },
+    {
+      "id": "ipv6-info",
+      "name": "IPv6 Prefix Info",
+      "category": "it",
+      "desc": "Info prefix & jumlah alamat IPv6",
+      "icon": "🔢",
+      "tags": [
+        "ipv6"
+      ]
+    },
+    {
+      "id": "port-check",
+      "name": "Port Common List",
+      "category": "it",
+      "desc": "Cek port layanan umum",
+      "icon": "🚪",
+      "tags": [
+        "port"
+      ]
+    },
+    {
+      "id": "subnet-hosts",
+      "name": "Hosts from CIDR",
+      "category": "it",
+      "desc": "Jumlah host dari prefix saja",
+      "icon": "👥",
+      "tags": [
+        "hosts"
+      ]
+    },
+    {
+      "id": "mac-vendor",
+      "name": "MAC Format Helper",
+      "category": "it",
+      "desc": "Format MAC address",
+      "icon": "📡",
+      "tags": [
+        "mac"
+      ]
+    },
+    {
+      "id": "base64",
+      "name": "Base64 Encode/Decode",
+      "category": "it",
+      "desc": "Encode & decode Base64",
+      "icon": "🔐",
+      "tags": [
+        "base64"
+      ]
+    },
+    {
+      "id": "url-encode",
+      "name": "URL Encode/Decode",
+      "category": "it",
+      "desc": "Encode & decode URL",
+      "icon": "🔗",
+      "tags": [
+        "url"
+      ]
+    },
+    {
+      "id": "transformer",
+      "name": "Transformer Turns",
+      "category": "elektronik",
+      "desc": "Rasio lilitan & tegangan trafo",
+      "icon": "🔌",
+      "tags": [
+        "trafo"
+      ]
+    },
+    {
+      "id": "battery-life",
+      "name": "Battery Life",
+      "category": "elektronik",
+      "desc": "Estimasi lama baterai",
+      "icon": "🔋",
+      "tags": [
+        "baterai"
+      ]
+    },
+    {
+      "id": "pwm-duty",
+      "name": "PWM Duty Cycle",
+      "category": "elektronik",
+      "desc": "Duty cycle & tegangan rata-rata",
+      "icon": "📶",
+      "tags": [
+        "pwm"
+      ]
+    },
+    {
+      "id": "opamp-gain",
+      "name": "Op-Amp Gain",
+      "category": "elektronik",
+      "desc": "Gain inverting / non-inverting",
+      "icon": "📈",
+      "tags": [
+        "opamp"
+      ]
+    },
+    {
+      "id": "0-100",
+      "name": "0–100 Estimate",
+      "category": "otomotif",
+      "desc": "Estimasi waktu 0–100 dari HP & berat",
+      "icon": "🏁",
+      "tags": [
+        "akselerasi"
+      ]
+    },
+    {
+      "id": "power-weight",
+      "name": "Power-to-Weight",
+      "category": "otomotif",
+      "desc": "HP per ton / kg",
+      "icon": "⚖️",
+      "tags": [
+        "pwr"
+      ]
+    },
+    {
+      "id": "fuel-cost",
+      "name": "Biaya BBM Perjalanan",
+      "category": "otomotif",
+      "desc": "Estimasi biaya bahan bakar",
+      "icon": "💰",
+      "tags": [
+        "bbm",
+        "biaya"
+      ]
+    },
+    {
+      "id": "gear-speed",
+      "name": "Gear Speed Chart",
+      "category": "otomotif",
+      "desc": "Kecepatan per gigi di RPM tertentu",
+      "icon": "📊",
+      "tags": [
+        "gear"
+      ]
+    },
+    {
+      "id": "wheel-hp",
+      "name": "Wheel HP (approx)",
+      "category": "otomotif",
+      "desc": "Estimasi WHP dari crank HP",
+      "icon": "🛞",
+      "tags": [
+        "whp"
+      ]
+    },
+    {
+      "id": "pressure",
+      "name": "Pressure (P=F/A)",
+      "category": "fisika",
+      "desc": "Tekanan dari gaya & luas",
+      "icon": "📉",
+      "tags": [
+        "tekanan"
+      ]
+    },
+    {
+      "id": "ohms-physics",
+      "name": "Ohm (Fisika)",
+      "category": "fisika",
+      "desc": "V=IR sederhana",
+      "icon": "⚡",
+      "tags": [
+        "ohm"
+      ]
+    },
+    {
+      "id": "coulomb",
+      "name": "Coulomb Force",
+      "category": "fisika",
+      "desc": "Gaya Coulomb antar muatan",
+      "icon": "⚛️",
+      "tags": [
+        "coulomb"
+      ]
+    },
+    {
+      "id": "snell",
+      "name": "Snell's Law",
+      "category": "fisika",
+      "desc": "Pembiasan cahaya",
+      "icon": "💡",
+      "tags": [
+        "optik"
+      ]
+    },
+    {
+      "id": "orbital-vel",
+      "name": "Circular Orbit Velocity",
+      "category": "antariksa",
+      "desc": "v = √(μ/r)",
+      "icon": "🌍",
+      "tags": [
+        "orbit"
+      ]
+    },
+    {
+      "id": "synodic",
+      "name": "Synodic Period",
+      "category": "antariksa",
+      "desc": "Periode sinodis dua orbit",
+      "icon": "🔄",
+      "tags": [
+        "synodic"
+      ]
+    },
+    {
+      "id": "rocket-mass",
+      "name": "Rocket Mass Ratio",
+      "category": "antariksa",
+      "desc": "m₀/mf dari Δv & Isp",
+      "icon": "🚀",
+      "tags": [
+        "mass"
+      ]
+    },
+    {
+      "id": "light-time",
+      "name": "Light Travel Time",
+      "category": "antariksa",
+      "desc": "Waktu tempuh cahaya",
+      "icon": "✨",
+      "tags": [
+        "cahaya"
+      ]
+    },
+    {
+      "id": "schwarzschild",
+      "name": "Schwarzschild Radius",
+      "category": "antariksa",
+      "desc": "Radius black hole",
+      "icon": "🕳️",
+      "tags": [
+        "blackhole"
+      ]
+    },
+    {
+      "id": "kepler3",
+      "name": "Kepler's 3rd Law",
+      "category": "antariksa",
+      "desc": "T² ∝ a³",
+      "icon": "📐",
+      "tags": [
+        "kepler"
+      ]
+    },
+    {
+      "id": "mortgage",
+      "name": "KPR / Mortgage",
+      "category": "keuangan",
+      "desc": "Angsuran KPR detail",
+      "icon": "🏠",
+      "tags": [
+        "kpr"
+      ]
+    },
+    {
+      "id": "payback",
+      "name": "Payback Period",
+      "category": "keuangan",
+      "desc": "Waktu balik modal",
+      "icon": "⏳",
+      "tags": [
+        "payback"
+      ]
+    },
+    {
+      "id": "cagr",
+      "name": "CAGR",
+      "category": "keuangan",
+      "desc": "Compound Annual Growth Rate",
+      "icon": "📈",
+      "tags": [
+        "cagr"
+      ]
+    },
+    {
+      "id": "markup-price",
+      "name": "Harga Jual dari Markup",
+      "category": "keuangan",
+      "desc": "Cost → harga jual",
+      "icon": "🏷️",
+      "tags": [
+        "harga"
+      ]
+    },
+    {
+      "id": "beam-deflect",
+      "name": "Beam Deflection (sederhana)",
+      "category": "teknik",
+      "desc": "Defleksi balok sederhana",
+      "icon": "📏",
+      "tags": [
+        "balok"
+      ]
+    },
+    {
+      "id": "torque-tech",
+      "name": "Torque (Teknik)",
+      "category": "teknik",
+      "desc": "τ = F × r",
+      "icon": "🔧",
+      "tags": [
+        "torsi"
+      ]
+    },
+    {
+      "id": "rpm-to-rad",
+      "name": "RPM ↔ rad/s",
+      "category": "teknik",
+      "desc": "Konversi kecepatan sudut",
+      "icon": "🔄",
+      "tags": [
+        "rpm"
+      ]
+    },
+    {
+      "id": "heat-transfer",
+      "name": "Heat Transfer (sederhana)",
+      "category": "teknik",
+      "desc": "Q = m × c × ΔT",
+      "icon": "🔥",
+      "tags": [
+        "panas"
+      ]
+    },
+    {
+      "id": "reynold",
+      "name": "Reynolds Number",
+      "category": "teknik",
+      "desc": "Re = ρvD/μ",
+      "icon": "🌊",
+      "tags": [
+        "reynold"
+      ]
+    },
+    {
+      "id": "bolt-torque",
+      "name": "Bolt Torque Estimate",
+      "category": "teknik",
+      "desc": "Estimasi torsi baut",
+      "icon": "🔩",
+      "tags": [
+        "baut"
+      ]
+    },
+    {
+      "id": "unit-pressure",
+      "name": "Pressure Unit Convert",
+      "category": "teknik",
+      "desc": "Pa, bar, psi, atm",
+      "icon": "📊",
+      "tags": [
+        "tekanan"
+      ]
+    },
+    {
+      "id": "steel-weight",
+      "name": "Berat Baja",
+      "category": "teknik",
+      "desc": "Estimasi berat plat/besi",
+      "icon": "🏗️",
+      "tags": [
+        "baja"
+      ]
     }
   ]
 }

@@ -4,75 +4,53 @@
 
 export function renderCalculator(id, container, playClick) {
   const map = {
-    basic: renderBasic,
-    scientific: renderScientific,
-    percentage: renderPercentage,
-    bmi: renderBMI,
-    egfr: renderEGFR,
-    bmr: renderBMR,
-    dosage: renderDosage,
-    subnet: renderSubnet,
-    ohm: renderOhm,
-    'led-resistor': renderLED,
-    'resistor-color': renderResistorColor,
-    'voltage-divider': renderVoltageDivider,
-    'rc-time': renderRC,
-    'gear-ratio': renderGearRatio,
-    'hp-torque': renderHPTorque,
-    'fuel-economy': renderFuel,
-    kinematics: renderKinematics,
-    projectile: renderProjectile,
-    'free-fall': renderFreeFall,
-    'delta-v': renderDeltaV,
-    orbital: renderOrbital,
-    npv: renderNPV,
-    loan: renderLoan,
-    compound: renderCompound,
-    roi: renderROI,
-    'break-even': renderBreakEven,
-    'percentage-business': renderMargin,
-    'unit-converter': renderUnitConverter,
-    'date-diff': renderDateDiff,
-    age: renderAge,
-    // new
-    fraction: renderFraction,
-    random: renderRandom,
-    average: renderAverage,
-    bsa: renderBSA,
-    ibw: renderIBW,
-    pregnancy: renderPregnancy,
-    'heart-rate': renderHeartRate,
-    creatinine: renderCreatinine,
-    'cidr-convert': renderCIDRConvert,
-    bandwidth: renderBandwidth,
-    binary: renderBinary,
-    wildcard: renderWildcard,
-    'data-size': renderDataSize,
-    'series-parallel': renderSeriesParallel,
-    'capacitor-energy': renderCapEnergy,
-    'lc-resonance': renderLC,
-    'speed-rpm': renderSpeedRPM,
-    'tire-size': renderTireSize,
-    compression: renderCompression,
-    'engine-disp': renderEngineDisp,
-    force: renderForce,
-    energy: renderEnergy,
-    momentum: renderMomentum,
-    'work-power': renderWorkPower,
-    density: renderDensity,
-    wave: renderWave,
-    escape: renderEscape,
-    hohmann: renderHohmann,
-    'simple-interest': renderSimpleInterest,
-    discount: renderDiscount,
-    salary: renderSalary,
-    inflation: renderInflation,
-    'cac-clv': renderCACCLV,
-    concrete: renderConcrete,
-    'area-volume': renderAreaVolume,
-    pythagoras: renderPythagoras,
-    slope: renderSlope
+    basic: renderBasic, scientific: renderScientific, percentage: renderPercentage,
+    bmi: renderBMI, egfr: renderEGFR, bmr: renderBMR, dosage: renderDosage,
+    subnet: renderSubnet, ohm: renderOhm, 'led-resistor': renderLED,
+    'resistor-color': renderResistorColor, 'voltage-divider': renderVoltageDivider,
+    'rc-time': renderRC, 'gear-ratio': renderGearRatio, 'hp-torque': renderHPTorque,
+    'fuel-economy': renderFuel, kinematics: renderKinematics, projectile: renderProjectile,
+    'free-fall': renderFreeFall, 'delta-v': renderDeltaV, orbital: renderOrbital,
+    npv: renderNPV, loan: renderLoan, compound: renderCompound, roi: renderROI,
+    'break-even': renderBreakEven, 'percentage-business': renderMargin,
+    'unit-converter': renderUnitConverter, 'date-diff': renderDateDiff, age: renderAge,
+    fraction: renderFraction, random: renderRandom, average: renderAverage,
+    bsa: renderBSA, ibw: renderIBW, pregnancy: renderPregnancy,
+    'heart-rate': renderHeartRate, creatinine: renderCreatinine,
+    'cidr-convert': renderCIDRConvert, bandwidth: renderBandwidth, binary: renderBinary,
+    wildcard: renderWildcard, 'data-size': renderDataSize,
+    'series-parallel': renderSeriesParallel, 'capacitor-energy': renderCapEnergy,
+    'lc-resonance': renderLC, 'speed-rpm': renderSpeedRPM, 'tire-size': renderTireSize,
+    compression: renderCompression, 'engine-disp': renderEngineDisp,
+    force: renderForce, energy: renderEnergy, momentum: renderMomentum,
+    'work-power': renderWorkPower, density: renderDensity, wave: renderWave,
+    escape: renderEscape, hohmann: renderHohmann,
+    'simple-interest': renderSimpleInterest, discount: renderDiscount,
+    salary: renderSalary, inflation: renderInflation, 'cac-clv': renderCACCLV,
+    concrete: renderConcrete, 'area-volume': renderAreaVolume,
+    pythagoras: renderPythagoras, slope: renderSlope,
+    // batch 2
+    tip: renderTip, gpa: renderGPA, 'percentage-change': renderPctChange, ratio: renderRatio,
+    quadratic: renderQuadratic, factorial: renderFactorial, 'log-solver': renderLogSolver,
+    'matrix-2x2': renderMatrix, 'std-deviation': renderStdDev, complex: renderComplex,
+    'angle-convert': renderAngle, prime: renderPrime, modulo: renderModulo,
+    map: renderMAP, 'iv-drip': renderIVDrip, 'ideal-weight-range': renderIdealRange,
+    'water-intake': renderWater,
+    'ipv6-info': renderIPv6, 'port-check': renderPort, 'subnet-hosts': renderSubnetHosts,
+    'mac-vendor': renderMAC, base64: renderBase64, 'url-encode': renderURL,
+    transformer: renderTransformer, 'battery-life': renderBattery, 'pwm-duty': renderPWM,
+    'opamp-gain': renderOpAmp,
+    '0-100': render0100, 'power-weight': renderPwrWeight, 'fuel-cost': renderFuelCost,
+    'gear-speed': renderGearSpeed, 'wheel-hp': renderWheelHP,
+    pressure: renderPressure, 'ohms-physics': renderOhmsPhys, coulomb: renderCoulomb, snell: renderSnell,
+    'orbital-vel': renderOrbVel, synodic: renderSynodic, 'rocket-mass': renderRocketMass,
+    'light-time': renderLightTime, schwarzschild: renderSchwarz, kepler3: renderKepler3,
+    mortgage: renderMortgage, payback: renderPayback, cagr: renderCAGR, 'markup-price': renderMarkupPrice,
+    'beam-deflect': renderBeam, 'torque-tech': renderTorqueTech, 'rpm-to-rad': renderRPMrad,
+    'heat-transfer': renderHeat, reynold: renderReynold, 'bolt-torque': renderBolt,
+    'unit-pressure': renderUnitPressure, 'steel-weight': renderSteel
   };
+
 
   const fn = map[id] || (() => {
     container.innerHTML = `<p style="color:var(--text-muted)">Kalkulator ini sedang dalam pengembangan.</p>`;
@@ -1678,6 +1656,117 @@ function renderSlope(el, play) {
     out.innerHTML = `<div class="detail">Slope: <strong>${fmt(slope)}</strong><br>Angle: <strong>${fmt(angle)}°</strong><br>Grade: <strong>${fmt(pct)}%</strong></div>`;
   };
 }
+
+
+
+/* ========== BATCH 2 ========== */
+function renderTip(el,play){el.innerHTML=formHTML([{id:'tpBill',label:'Total tagihan',placeholder:'250000'},{id:'tpPct',label:'Tip (%)',placeholder:'10'}],'Hitung')+`<div class="result-box" id="tpOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const b=+el.querySelector('#tpBill').value,p=+el.querySelector('#tpPct').value;const tip=b*p/100;const out=el.querySelector('#tpOut');out.style.display='block';out.innerHTML=`<div class="detail">Tip: <strong>${fmt(tip)}</strong><br>Total bayar: <strong>${fmt(b+tip)}</strong></div>`;};}
+
+function renderGPA(el,play){el.innerHTML=`<div class="form-group"><label>Nilai & SKS (contoh: A:3, B:2, A:4)</label><input id="gpaIn" placeholder="A:3, B:2, A:4"></div><button class="btn-calc">Hitung IPK</button><div class="result-box" id="gpaOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const map={A:4,B:3,C:2,D:1,E:0,'A-':3.7,'B+':3.3};const parts=el.querySelector('#gpaIn').value.split(',').map(s=>s.trim());let pts=0,sks=0;for(const p of parts){const [g,s]=p.split(':');const sc=+s;if(!sc||!(g in map||g.toUpperCase() in map))continue;pts+=(map[g]||map[g.toUpperCase()])*sc;sks+=sc;}if(!sks)return;const out=el.querySelector('#gpaOut');out.style.display='block';out.innerHTML=`<div class="value">${(pts/sks).toFixed(2)}</div><div class="detail">Total SKS: ${sks}</div>`;};}
+
+function renderPctChange(el,play){el.innerHTML=formHTML([{id:'pcOld',label:'Nilai lama',placeholder:'100'},{id:'pcNew',label:'Nilai baru',placeholder:'120'}],'Hitung')+`<div class="result-box" id="pcOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const o=+el.querySelector('#pcOld').value,n=+el.querySelector('#pcNew').value;if(!o)return;const pct=((n-o)/o)*100;const out=el.querySelector('#pcOut');out.style.display='block';out.innerHTML=`<div class="value">${pct>=0?'+':''}${pct.toFixed(2)}%</div>`;};}
+
+function renderRatio(el,play){el.innerHTML=formHTML([{id:'raA',label:'a',placeholder:'2'},{id:'raB',label:'b',placeholder:'4'}],'Sederhanakan')+`<div class="result-box" id="raOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();let a=+el.querySelector('#raA').value,b=+el.querySelector('#raB').value;const g=(x,y)=>y?g(y,x%y):x;const d=g(Math.abs(a),Math.abs(b));const out=el.querySelector('#raOut');out.style.display='block';out.innerHTML=`<div class="value">${a/d} : ${b/d}</div>`;};}
+
+function renderQuadratic(el,play){el.innerHTML=formHTML([{id:'qaA',label:'a',placeholder:'1'},{id:'qaB',label:'b',placeholder:'-5'},{id:'qaC',label:'c',placeholder:'6'}],'Hitung akar')+`<div class="result-box" id="qaOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const a=+el.querySelector('#qaA').value,b=+el.querySelector('#qaB').value,c=+el.querySelector('#qaC').value;const d=b*b-4*a*c;let res;if(d<0)res='Akar kompleks / tidak real';else if(d===0)res=`x = ${fmt(-b/(2*a))}`;else res=`x₁ = ${fmt((-b+Math.sqrt(d))/(2*a))}<br>x₂ = ${fmt((-b-Math.sqrt(d))/(2*a))}`;const out=el.querySelector('#qaOut');out.style.display='block';out.innerHTML=`<div class="detail">${res}<br>Diskriminan: ${fmt(d)}</div>`;};}
+
+function renderFactorial(el,play){el.innerHTML=formHTML([{id:'faN',label:'n',placeholder:'5'},{id:'faR',label:'r (untuk nPr/nCr)',placeholder:'2'}],'Hitung')+`<div class="result-box" id="faOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const n=+el.querySelector('#faN').value,r=+el.querySelector('#faR').value;const fact=x=>{let p=1;for(let i=2;i<=x;i++)p*=i;return p;};const nf=fact(n);let pr=1,cr=1;if(r>=0&&r<=n){pr=fact(n)/fact(n-r);cr=pr/fact(r);}const out=el.querySelector('#faOut');out.style.display='block';out.innerHTML=`<div class="detail">n! = <strong>${fmt(nf)}</strong><br>nPr = <strong>${fmt(pr)}</strong><br>nCr = <strong>${fmt(cr)}</strong></div>`;};}
+
+function renderLogSolver(el,play){el.innerHTML=formHTML([{id:'lgBase',label:'Base (b)',placeholder:'10'},{id:'lgArg',label:'Argument (a)',placeholder:'100'}],'Hitung log')+`<div class="result-box" id="lgOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const b=+el.querySelector('#lgBase').value,a=+el.querySelector('#lgArg').value;if(b<=0||b===1||a<=0)return;const out=el.querySelector('#lgOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(Math.log(a)/Math.log(b))}</div>`;};}
+
+function renderMatrix(el,play){el.innerHTML=`<p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.5rem">Matrix 2×2: [a b; c d]</p>${formHTML([{id:'mA',label:'a',placeholder:'1'},{id:'mB',label:'b',placeholder:'2'},{id:'mC',label:'c',placeholder:'3'},{id:'mD',label:'d',placeholder:'4'}],'Hitung')}<div class="result-box" id="mOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const a=+el.querySelector('#mA').value,b=+el.querySelector('#mB').value,c=+el.querySelector('#mC').value,d=+el.querySelector('#mD').value;const det=a*d-b*c;const out=el.querySelector('#mOut');out.style.display='block';out.innerHTML=`<div class="detail">Det = <strong>${fmt(det)}</strong>${det?`<br>Invers: [${fmt(d/det)} ${fmt(-b/det)}; ${fmt(-c/det)} ${fmt(a/det)}]`:'<br>Tidak invertible'}</div>`;};}
+
+function renderStdDev(el,play){el.innerHTML=formHTML([{id:'sdData',label:'Data (koma)',placeholder:'2,4,4,4,5,5,7,9'}],'Hitung')+`<div class="result-box" id="sdOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const arr=el.querySelector('#sdData').value.split(',').map(s=>+s.trim()).filter(n=>!isNaN(n));if(!arr.length)return;const n=arr.length,mean=arr.reduce((a,b)=>a+b,0)/n;const v=arr.reduce((a,b)=>a+(b-mean)**2,0)/n;const out=el.querySelector('#sdOut');out.style.display='block';out.innerHTML=`<div class="detail">Mean: <strong>${fmt(mean)}</strong><br>Variance: <strong>${fmt(v)}</strong><br>SD: <strong>${fmt(Math.sqrt(v))}</strong></div>`;};}
+
+function renderComplex(el,play){el.innerHTML=formHTML([{id:'cxA',label:'a (real 1)',placeholder:'3'},{id:'cxB',label:'b (imag 1)',placeholder:'2'},{id:'cxC',label:'c (real 2)',placeholder:'1'},{id:'cxD',label:'d (imag 2)',placeholder:'4'},{id:'cxOp',label:'Operasi',type:'select',options:[['+','+'],['-','−'],['*','×']]}],'Hitung')+`<div class="result-box" id="cxOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const a=+el.querySelector('#cxA').value,b=+el.querySelector('#cxB').value,c=+el.querySelector('#cxC').value,d=+el.querySelector('#cxD').value,op=el.querySelector('#cxOp').value;let r,i;if(op==='+'){r=a+c;i=b+d;}else if(op==='-'){r=a-c;i=b-d;}else{r=a*c-b*d;i=a*d+b*c;}const out=el.querySelector('#cxOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(r)} ${i>=0?'+':''} ${fmt(i)}i</div>`;};}
+
+function renderAngle(el,play){el.innerHTML=formHTML([{id:'anVal',label:'Nilai',placeholder:'180'},{id:'anFrom',label:'Dari',type:'select',options:[['deg','Degree'],['rad','Radian']]}],'Konversi')+`<div class="result-box" id="anOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const v=+el.querySelector('#anVal').value,from=el.querySelector('#anFrom').value;const out=el.querySelector('#anOut');out.style.display='block';if(from==='deg')out.innerHTML=`<div class="value">${fmt(v*Math.PI/180)} rad</div>`;else out.innerHTML=`<div class="value">${fmt(v*180/Math.PI)} °</div>`;};}
+
+function renderPrime(el,play){el.innerHTML=formHTML([{id:'prN',label:'Angka',placeholder:'17'}],'Cek')+`<div class="result-box" id="prOut3" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const n=Math.floor(+el.querySelector('#prN').value);if(n<2){el.querySelector('#prOut3').style.display='block';el.querySelector('#prOut3').innerHTML='<div class="value">Bukan prima</div>';return;}let ok=true;for(let i=2;i*i<=n;i++)if(n%i===0){ok=false;break;}const factors=[];for(let i=1;i<=n;i++)if(n%i===0)factors.push(i);const out=el.querySelector('#prOut3');out.style.display='block';out.innerHTML=`<div class="value">${ok?'Prima':'Bukan prima'}</div><div class="detail">Faktor: ${factors.join(', ')}</div>`;};}
+
+function renderModulo(el,play){el.innerHTML=formHTML([{id:'mdA',label:'a',placeholder:'17'},{id:'mdB',label:'b',placeholder:'5'}],'Hitung')+`<div class="result-box" id="mdOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const a=+el.querySelector('#mdA').value,b=+el.querySelector('#mdB').value;if(!b)return;const out=el.querySelector('#mdOut');out.style.display='block';out.innerHTML=`<div class="detail">a ÷ b = <strong>${Math.floor(a/b)}</strong><br>a mod b = <strong>${a%b}</strong></div>`;};}
+
+function renderMAP(el,play){el.innerHTML=formHTML([{id:'mpSys',label:'Sistolik',placeholder:'120'},{id:'mpDia',label:'Diastolik',placeholder:'80'}],'Hitung MAP')+`<div class="result-box" id="mpOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const s=+el.querySelector('#mpSys').value,d=+el.querySelector('#mpDia').value;const map=(s+2*d)/3;const out=el.querySelector('#mpOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(map)} mmHg</div>`;};}
+
+function renderIVDrip(el,play){el.innerHTML=formHTML([{id:'ivVol',label:'Volume (mL)',placeholder:'500'},{id:'ivTime',label:'Waktu (jam)',placeholder:'4'},{id:'ivDrop',label:'Drop factor (gtt/mL)',placeholder:'20'}],'Hitung')+`<div class="result-box" id="ivOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const v=+el.querySelector('#ivVol').value,t=+el.querySelector('#ivTime').value,df=+el.querySelector('#ivDrop').value;if(!t)return;const rate=(v*df)/(t*60);const out=el.querySelector('#ivOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(rate)} gtt/min</div>`;};}
+
+function renderIdealRange(el,play){el.innerHTML=formHTML([{id:'irH',label:'Tinggi (cm)',placeholder:'170'}],'Hitung')+`<div class="result-box" id="irOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const h=+el.querySelector('#irH').value/100;if(!h)return;const lo=18.5*h*h,hi=24.9*h*h;const out=el.querySelector('#irOut');out.style.display='block';out.innerHTML=`<div class="detail">Berat ideal: <strong>${fmt(lo)} – ${fmt(hi)} kg</strong></div>`;};}
+
+function renderWater(el,play){el.innerHTML=formHTML([{id:'waW',label:'Berat (kg)',placeholder:'70'}],'Hitung')+`<div class="result-box" id="waOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const w=+el.querySelector('#waW').value;const ml=w*35;const out=el.querySelector('#waOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(ml)} mL/hari</div><div class="detail">≈ ${fmt(ml/1000)} liter</div>`;};}
+
+function renderIPv6(el,play){el.innerHTML=formHTML([{id:'v6P',label:'Prefix length',placeholder:'64'}],'Info')+`<div class="result-box" id="v6Out" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const p=+el.querySelector('#v6P').value;if(p<0||p>128)return;const hosts=p>=128?1:2n**(BigInt(128-p));const out=el.querySelector('#v6Out');out.style.display='block';out.innerHTML=`<div class="detail">Alamat dalam /${p}: <strong>${hosts.toLocaleString()}</strong></div>`;};}
+
+function renderPort(el,play){const ports={20:'FTP data',21:'FTP',22:'SSH',23:'Telnet',25:'SMTP',53:'DNS',80:'HTTP',110:'POP3',143:'IMAP',443:'HTTPS',3306:'MySQL',5432:'PostgreSQL',6379:'Redis',8080:'HTTP alt'};el.innerHTML=formHTML([{id:'poN',label:'Port number',placeholder:'443'}],'Cek')+`<div class="result-box" id="poOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const n=+el.querySelector('#poN').value;const out=el.querySelector('#poOut');out.style.display='block';out.innerHTML=`<div class="value">${ports[n]||'Tidak dikenal / custom'}</div>`;};}
+
+function renderSubnetHosts(el,play){el.innerHTML=formHTML([{id:'shC',label:'CIDR',placeholder:'24'}],'Hitung')+`<div class="result-box" id="shOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const c=+el.querySelector('#shC').value;if(c<0||c>32)return;const h=c>=31?(c===32?1:2):2**(32-c)-2;const out=el.querySelector('#shOut');out.style.display='block';out.innerHTML=`<div class="value">${h} hosts</div>`;};}
+
+function renderMAC(el,play){el.innerHTML=`<div class="form-group"><label>MAC (aa:bb:cc:dd:ee:ff atau aabbccddeeff)</label><input id="macIn" placeholder="00:1A:2B:3C:4D:5E"></div><button class="btn-calc">Format</button><div class="result-box" id="macOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();let m=el.querySelector('#macIn').value.replace(/[^0-9a-fA-F]/g,'').toUpperCase();if(m.length!==12){el.querySelector('#macOut').style.display='block';el.querySelector('#macOut').innerHTML='<div class="value">Invalid</div>';return;}const colon=m.match(/.{2}/g).join(':');const dash=m.match(/.{2}/g).join('-');const cisco=m.match(/.{4}/g).join('.');const out=el.querySelector('#macOut');out.style.display='block';out.innerHTML=`<div class="detail">${colon}<br>${dash}<br>${cisco}</div>`;};}
+
+function renderBase64(el,play){el.innerHTML=`<div class="form-group"><label>Teks</label><input id="b64In" placeholder="Hello"></div><div class="form-group"><label>Mode</label><select id="b64Mode"><option value="enc">Encode</option><option value="dec">Decode</option></select></div><button class="btn-calc">Proses</button><div class="result-box" id="b64Out" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const t=el.querySelector('#b64In').value,mode=el.querySelector('#b64Mode').value;let r;try{r=mode==='enc'?btoa(t):atob(t);}catch{r='Error';}const out=el.querySelector('#b64Out');out.style.display='block';out.innerHTML=`<div class="value" style="font-size:1rem;word-break:break-all">${r}</div>`;};}
+
+function renderURL(el,play){el.innerHTML=`<div class="form-group"><label>Teks / URL</label><input id="urlIn" placeholder="hello world"></div><div class="form-group"><label>Mode</label><select id="urlMode"><option value="enc">Encode</option><option value="dec">Decode</option></select></div><button class="btn-calc">Proses</button><div class="result-box" id="urlOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const t=el.querySelector('#urlIn').value,mode=el.querySelector('#urlMode').value;const r=mode==='enc'?encodeURIComponent(t):decodeURIComponent(t);const out=el.querySelector('#urlOut');out.style.display='block';out.innerHTML=`<div class="value" style="font-size:1rem;word-break:break-all">${r}</div>`;};}
+
+function renderTransformer(el,play){el.innerHTML=formHTML([{id:'trVp',label:'Vp (V)',placeholder:'220'},{id:'trNp',label:'Np (lilitan primer)',placeholder:'1000'},{id:'trNs',label:'Ns (lilitan sekunder)',placeholder:'50'}],'Hitung Vs')+`<div class="result-box" id="trOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const vp=+el.querySelector('#trVp').value,np=+el.querySelector('#trNp').value,ns=+el.querySelector('#trNs').value;if(!np)return;const vs=vp*ns/np;const out=el.querySelector('#trOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(vs)} V</div><div class="detail">Rasio: ${fmt(np/ns)} : 1</div>`;};}
+
+function renderBattery(el,play){el.innerHTML=formHTML([{id:'btCap',label:'Kapasitas (mAh)',placeholder:'3000'},{id:'btLoad',label:'Beban (mA)',placeholder:'150'}],'Hitung')+`<div class="result-box" id="btOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const cap=+el.querySelector('#btCap').value,load=+el.querySelector('#btLoad').value;if(!load)return;const h=cap/load;const out=el.querySelector('#btOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(h)} jam</div>`;};}
+
+function renderPWM(el,play){el.innerHTML=formHTML([{id:'pwDuty',label:'Duty cycle (%)',placeholder:'50'},{id:'pwV',label:'V supply',placeholder:'5'}],'Hitung')+`<div class="result-box" id="pwOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const d=+el.querySelector('#pwDuty').value,v=+el.querySelector('#pwV').value;const out=el.querySelector('#pwOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(v*d/100)} V avg</div>`;};}
+
+function renderOpAmp(el,play){el.innerHTML=formHTML([{id:'oaType',label:'Tipe',type:'select',options:[['inv','Inverting'],['non','Non-inverting']]},{id:'oaRf',label:'Rf (Ω)',placeholder:'10000'},{id:'oaRin',label:'Rin (Ω)',placeholder:'1000'}],'Hitung Gain')+`<div class="result-box" id="oaOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const t=el.querySelector('#oaType').value,rf=+el.querySelector('#oaRf').value,rin=+el.querySelector('#oaRin').value;if(!rin)return;const g=t==='inv'?-(rf/rin):(1+rf/rin);const out=el.querySelector('#oaOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(g)}</div>`;};}
+
+function render0100(el,play){el.innerHTML=formHTML([{id:'zHP',label:'HP',placeholder:'150'},{id:'zW',label:'Berat (kg)',placeholder:'1200'}],'Estimasi')+`<div class="result-box" id="zOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const hp=+el.querySelector('#zHP').value,w=+el.querySelector('#zW').value;if(!hp||!w)return;const t=Math.pow(w/hp,0.33)*2.5;const out=el.querySelector('#zOut');out.style.display='block';out.innerHTML=`<div class="value">~${fmt(t)} s</div><div class="detail">Estimasi kasar 0–100 km/h</div>`;};}
+
+function renderPwrWeight(el,play){el.innerHTML=formHTML([{id:'pwHP',label:'HP',placeholder:'200'},{id:'pwKg',label:'Berat (kg)',placeholder:'1400'}],'Hitung')+`<div class="result-box" id="pw2Out" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const hp=+el.querySelector('#pwHP').value,kg=+el.querySelector('#pwKg').value;if(!kg)return;const out=el.querySelector('#pw2Out');out.style.display='block';out.innerHTML=`<div class="detail">${fmt(hp/(kg/1000))} HP/ton<br>${fmt(kg/hp)} kg/HP</div>`;};}
+
+function renderFuelCost(el,play){el.innerHTML=formHTML([{id:'fcDist',label:'Jarak (km)',placeholder:'300'},{id:'fcKml',label:'Konsumsi (km/L)',placeholder:'12'},{id:'fcPrice',label:'Harga BBM /L',placeholder:'13000'}],'Hitung')+`<div class="result-box" id="fcOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const d=+el.querySelector('#fcDist').value,k=+el.querySelector('#fcKml').value,p=+el.querySelector('#fcPrice').value;if(!k)return;const liter=d/k,cost=liter*p;const out=el.querySelector('#fcOut');out.style.display='block';out.innerHTML=`<div class="detail">BBM: <strong>${fmt(liter)} L</strong><br>Biaya: <strong>${fmt(cost)}</strong></div>`;};}
+
+function renderGearSpeed(el,play){el.innerHTML=formHTML([{id:'gsRPM',label:'RPM',placeholder:'3000'},{id:'gsRatio',label:'Overall gear ratio',placeholder:'3.5'},{id:'gsTire',label:'Tire diameter (inch)',placeholder:'25'}],'Hitung')+`<div class="result-box" id="gsOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const rpm=+el.querySelector('#gsRPM').value,gr=+el.querySelector('#gsRatio').value,tire=+el.querySelector('#gsTire').value;const mph=(rpm*tire)/(gr*336);const out=el.querySelector('#gsOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(mph*1.60934)} km/h</div>`;};}
+
+function renderWheelHP(el,play){el.innerHTML=formHTML([{id:'whCrank',label:'Crank HP',placeholder:'200'},{id:'whLoss',label:'Drivetrain loss (%)',placeholder:'15'}],'Hitung')+`<div class="result-box" id="whOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const c=+el.querySelector('#whCrank').value,l=+el.querySelector('#whLoss').value;const out=el.querySelector('#whOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(c*(1-l/100))} WHP</div>`;};}
+
+function renderPressure(el,play){el.innerHTML=formHTML([{id:'prF',label:'Gaya (N)',placeholder:'100'},{id:'prA',label:'Luas (m²)',placeholder:'0.01'}],'Hitung P')+`<div class="result-box" id="prOut4" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const f=+el.querySelector('#prF').value,a=+el.querySelector('#prA').value;if(!a)return;const out=el.querySelector('#prOut4');out.style.display='block';out.innerHTML=`<div class="value">${fmt(f/a)} Pa</div>`;};}
+
+function renderOhmsPhys(el,play){el.innerHTML=formHTML([{id:'opV',label:'V',placeholder:'12'},{id:'opR',label:'R (Ω)',placeholder:'100'}],'Hitung I')+`<div class="result-box" id="opOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const v=+el.querySelector('#opV').value,r=+el.querySelector('#opR').value;if(!r)return;const out=el.querySelector('#opOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(v/r)} A</div>`;};}
+
+function renderCoulomb(el,play){el.innerHTML=formHTML([{id:'coQ1',label:'q1 (C)',placeholder:'1e-6'},{id:'coQ2',label:'q2 (C)',placeholder:'1e-6'},{id:'coR',label:'Jarak (m)',placeholder:'0.1'}],'Hitung F')+`<div class="result-box" id="coOut2" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const q1=+el.querySelector('#coQ1').value,q2=+el.querySelector('#coQ2').value,r=+el.querySelector('#coR').value;if(!r)return;const k=8.99e9;const out=el.querySelector('#coOut2');out.style.display='block';out.innerHTML=`<div class="value">${fmt(k*q1*q2/(r*r))} N</div>`;};}
+
+function renderSnell(el,play){el.innerHTML=formHTML([{id:'snN1',label:'n1',placeholder:'1'},{id:'snT1',label:'θ1 (derajat)',placeholder:'30'},{id:'snN2',label:'n2',placeholder:'1.33'}],'Hitung θ2')+`<div class="result-box" id="snOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const n1=+el.querySelector('#snN1').value,t1=+el.querySelector('#snT1').value*Math.PI/180,n2=+el.querySelector('#snN2').value;const s=n1*Math.sin(t1)/n2;if(Math.abs(s)>1){el.querySelector('#snOut').style.display='block';el.querySelector('#snOut').innerHTML='<div class="value">Total internal reflection</div>';return;}const t2=Math.asin(s)*180/Math.PI;const out=el.querySelector('#snOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(t2)}°</div>`;};}
+
+function renderOrbVel(el,play){el.innerHTML=formHTML([{id:'ovR',label:'Radius orbit (km)',placeholder:'6771'},{id:'ovMu',label:'μ (km³/s²)',placeholder:'398600'}],'Hitung')+`<div class="result-box" id="ovOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const r=+el.querySelector('#ovR').value,mu=+el.querySelector('#ovMu').value;const v=Math.sqrt(mu/r);const out=el.querySelector('#ovOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(v)} km/s</div>`;};}
+
+function renderSynodic(el,play){el.innerHTML=formHTML([{id:'syT1',label:'Periode 1 (hari)',placeholder:'365.25'},{id:'syT2',label:'Periode 2 (hari)',placeholder:'686.98'}],'Hitung')+`<div class="result-box" id="syOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const t1=+el.querySelector('#syT1').value,t2=+el.querySelector('#syT2').value;const s=1/Math.abs(1/t1-1/t2);const out=el.querySelector('#syOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(s)} hari</div>`;};}
+
+function renderRocketMass(el,play){el.innerHTML=formHTML([{id:'rmDv',label:'Δv (m/s)',placeholder:'9400'},{id:'rmIsp',label:'Isp (s)',placeholder:'300'}],'Hitung mass ratio')+`<div class="result-box" id="rmOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const dv=+el.querySelector('#rmDv').value,isp=+el.querySelector('#rmIsp').value;const ve=isp*9.80665;const ratio=Math.exp(dv/ve);const out=el.querySelector('#rmOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(ratio)}</div><div class="detail">m₀/mf</div>`;};}
+
+function renderLightTime(el,play){el.innerHTML=formHTML([{id:'ltDist',label:'Jarak (km)',placeholder:'149597870.7'}],'Hitung')+`<div class="result-box" id="ltOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const d=+el.querySelector('#ltDist').value;const t=d/299792.458;const out=el.querySelector('#ltOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(t)} detik</div><div class="detail">${fmt(t/60)} menit</div>`;};}
+
+function renderSchwarz(el,play){el.innerHTML=formHTML([{id:'swM',label:'Massa (kg)',placeholder:'1.989e30'}],'Hitung Rs')+`<div class="result-box" id="swOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const M=+el.querySelector('#swM').value;const G=6.67430e-11,c=299792458;const rs=2*G*M/(c*c);const out=el.querySelector('#swOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(rs)} m</div><div class="detail">${fmt(rs/1000)} km</div>`;};}
+
+function renderKepler3(el,play){el.innerHTML=formHTML([{id:'k3A',label:'Semi-major axis a (AU)',placeholder:'1'},{id:'k3M',label:'Massa pusat (M☉)',placeholder:'1'}],'Hitung T')+`<div class="result-box" id="k3Out" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const a=+el.querySelector('#k3A').value,m=+el.querySelector('#k3M').value;const T=Math.sqrt(a*a*a/m);const out=el.querySelector('#k3Out');out.style.display='block';out.innerHTML=`<div class="value">${fmt(T)} tahun</div>`;};}
+
+function renderMortgage(el,play){el.innerHTML=formHTML([{id:'moP',label:'Pokok pinjaman',placeholder:'500000000'},{id:'moR',label:'Bunga / tahun (%)',placeholder:'8'},{id:'moN',label:'Tenor (bulan)',placeholder:'180'}],'Hitung')+`<div class="result-box" id="moOut2" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const P=+el.querySelector('#moP').value,r=+el.querySelector('#moR').value/100/12,n=+el.querySelector('#moN').value;const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);const out=el.querySelector('#moOut2');out.style.display='block';out.innerHTML=`<div class="value">${fmt(emi)}</div><div class="detail">Total: ${fmt(emi*n)} · Bunga: ${fmt(emi*n-P)}</div>`;};}
+
+function renderPayback(el,play){el.innerHTML=formHTML([{id:'pbInv',label:'Investasi awal',placeholder:'100000000'},{id:'pbCF',label:'Cash flow / tahun',placeholder:'25000000'}],'Hitung')+`<div class="result-box" id="pbOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const inv=+el.querySelector('#pbInv').value,cf=+el.querySelector('#pbCF').value;if(!cf)return;const out=el.querySelector('#pbOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(inv/cf)} tahun</div>`;};}
+
+function renderCAGR(el,play){el.innerHTML=formHTML([{id:'cgBegin',label:'Nilai awal',placeholder:'10000000'},{id:'cgEnd',label:'Nilai akhir',placeholder:'25000000'},{id:'cgY',label:'Tahun',placeholder:'5'}],'Hitung CAGR')+`<div class="result-box" id="cgOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const b=+el.querySelector('#cgBegin').value,e=+el.querySelector('#cgEnd').value,y=+el.querySelector('#cgY').value;if(!b||!y)return;const cagr=(Math.pow(e/b,1/y)-1)*100;const out=el.querySelector('#cgOut');out.style.display='block';out.innerHTML=`<div class="value">${cagr.toFixed(2)}%</div>`;};}
+
+function renderMarkupPrice(el,play){el.innerHTML=formHTML([{id:'mkCost',label:'Cost',placeholder:'80000'},{id:'mkPct',label:'Markup (%)',placeholder:'50'}],'Hitung harga jual')+`<div class="result-box" id="mkOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const c=+el.querySelector('#mkCost').value,p=+el.querySelector('#mkPct').value;const out=el.querySelector('#mkOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(c*(1+p/100))}</div>`;};}
+
+function renderBeam(el,play){el.innerHTML=formHTML([{id:'beF',label:'Load F (N)',placeholder:'1000'},{id:'beL',label:'Panjang L (m)',placeholder:'2'},{id:'beE',label:'E (Pa)',placeholder:'2e11'},{id:'beI',label:'I (m⁴)',placeholder:'1e-6'}],'Hitung defleksi max')+`<div class="result-box" id="beOut2" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const F=+el.querySelector('#beF').value,L=+el.querySelector('#beL').value,E=+el.querySelector('#beE').value,I=+el.querySelector('#beI').value;const d=F*L**3/(3*E*I);const out=el.querySelector('#beOut2');out.style.display='block';out.innerHTML=`<div class="value">${fmt(d)} m</div><div class="detail">Cantilever tip load (approx)</div>`;};}
+
+function renderTorqueTech(el,play){el.innerHTML=formHTML([{id:'tqF',label:'Gaya (N)',placeholder:'100'},{id:'tqR',label:'Lengan (m)',placeholder:'0.3'}],'Hitung τ')+`<div class="result-box" id="tqOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const f=+el.querySelector('#tqF').value,r=+el.querySelector('#tqR').value;const out=el.querySelector('#tqOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(f*r)} N·m</div>`;};}
+
+function renderRPMrad(el,play){el.innerHTML=formHTML([{id:'rrVal',label:'Nilai',placeholder:'3000'},{id:'rrFrom',label:'Dari',type:'select',options:[['rpm','RPM'],['rad','rad/s']]}],'Konversi')+`<div class="result-box" id="rrOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const v=+el.querySelector('#rrVal').value,from=el.querySelector('#rrFrom').value;const out=el.querySelector('#rrOut');out.style.display='block';if(from==='rpm')out.innerHTML=`<div class="value">${fmt(v*2*Math.PI/60)} rad/s</div>`;else out.innerHTML=`<div class="value">${fmt(v*60/(2*Math.PI))} RPM</div>`;};}
+
+function renderHeat(el,play){el.innerHTML=formHTML([{id:'htM',label:'Massa (kg)',placeholder:'1'},{id:'htC',label:'c (J/kg·K)',placeholder:'4186'},{id:'htDT',label:'ΔT (K)',placeholder:'10'}],'Hitung Q')+`<div class="result-box" id="htOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const m=+el.querySelector('#htM').value,c=+el.querySelector('#htC').value,dt=+el.querySelector('#htDT').value;const out=el.querySelector('#htOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(m*c*dt)} J</div>`;};}
+
+function renderReynold(el,play){el.innerHTML=formHTML([{id:'reRho',label:'ρ (kg/m³)',placeholder:'1000'},{id:'reV',label:'v (m/s)',placeholder:'1'},{id:'reD',label:'D (m)',placeholder:'0.05'},{id:'reMu',label:'μ (Pa·s)',placeholder:'0.001'}],'Hitung Re')+`<div class="result-box" id="reOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const rho=+el.querySelector('#reRho').value,v=+el.querySelector('#reV').value,D=+el.querySelector('#reD').value,mu=+el.querySelector('#reMu').value;if(!mu)return;const re=rho*v*D/mu;const out=el.querySelector('#reOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(re)}</div><div class="detail">${re<2300?'Laminar':re>4000?'Turbulent':'Transisi'}</div>`;};}
+
+function renderBolt(el,play){el.innerHTML=formHTML([{id:'boK',label:'K factor',placeholder:'0.2'},{id:'boD',label:'Diameter (m)',placeholder:'0.01'},{id:'boF',label:'Clamp force (N)',placeholder:'5000'}],'Hitung T')+`<div class="result-box" id="boOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const k=+el.querySelector('#boK').value,d=+el.querySelector('#boD').value,f=+el.querySelector('#boF').value;const out=el.querySelector('#boOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(k*d*f)} N·m</div>`;};}
+
+function renderUnitPressure(el,play){el.innerHTML=formHTML([{id:'upVal',label:'Nilai',placeholder:'1'},{id:'upFrom',label:'Dari',type:'select',options:[['Pa','Pa'],['bar','bar'],['psi','psi'],['atm','atm']]},{id:'upTo',label:'Ke',type:'select',options:[['Pa','Pa'],['bar','bar'],['psi','psi'],['atm','atm']]}],'Konversi')+`<div class="result-box" id="upOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const f={Pa:1,bar:1e5,psi:6894.76,atm:101325};const v=+el.querySelector('#upVal').value,from=el.querySelector('#upFrom').value,to=el.querySelector('#upTo').value;const out=el.querySelector('#upOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(v*f[from]/f[to])} ${to}</div>`;};}
+
+function renderSteel(el,play){el.innerHTML=formHTML([{id:'stL',label:'Panjang (m)',placeholder:'6'},{id:'stW',label:'Lebar (m)',placeholder:'1'},{id:'stT',label:'Tebal (mm)',placeholder:'10'},{id:'stRho',label:'ρ (kg/m³)',placeholder:'7850'}],'Hitung berat')+`<div class="result-box" id="stOut" style="display:none"></div>`;el.querySelector('.btn-calc').onclick=()=>{play();const l=+el.querySelector('#stL').value,w=+el.querySelector('#stW').value,t=+el.querySelector('#stT').value/1000,rho=+el.querySelector('#stRho').value;const out=el.querySelector('#stOut');out.style.display='block';out.innerHTML=`<div class="value">${fmt(l*w*t*rho)} kg</div>`;};}
 
 
 /* ========== HELPERS ========== */
