@@ -1,0 +1,257 @@
+{
+  "categories": [
+    { "id": "all", "name": "Semua", "icon": "⊞" },
+    { "id": "umum", "name": "Umum", "icon": "🔢" },
+    { "id": "ilmiah", "name": "Ilmiah", "icon": "🔬" },
+    { "id": "keuangan", "name": "Keuangan & Bisnis", "icon": "💰" },
+    { "id": "it", "name": "IT & Networking", "icon": "🌐" },
+    { "id": "elektronik", "name": "Elektronik", "icon": "⚡" },
+    { "id": "otomotif", "name": "Otomotif", "icon": "🚗" },
+    { "id": "fisika", "name": "Fisika", "icon": "⚛️" },
+    { "id": "kesehatan", "name": "Kesehatan", "icon": "❤️" },
+    { "id": "antariksa", "name": "Antariksa", "icon": "🚀" },
+    { "id": "teknik", "name": "Teknik", "icon": "🔧" }
+  ],
+  "calculators": [
+    {
+      "id": "basic",
+      "name": "Kalkulator Dasar",
+      "category": "umum",
+      "desc": "Operasi aritmetika dasar (+ − × ÷)",
+      "icon": "🧮",
+      "tags": ["basic", "aritmetika", "sederhana"]
+    },
+    {
+      "id": "scientific",
+      "name": "Kalkulator Ilmiah",
+      "category": "ilmiah",
+      "desc": "Trigonometri, logaritma, eksponen, statistik",
+      "icon": "🔬",
+      "tags": ["scientific", "trig", "log", "math"]
+    },
+    {
+      "id": "percentage",
+      "name": "Kalkulator Persentase",
+      "category": "umum",
+      "desc": "Hitung kenaikan, penurunan, dan persentase dari nilai",
+      "icon": "%",
+      "tags": ["persen", "diskon", "margin"]
+    },
+    {
+      "id": "bmi",
+      "name": "Kalkulator BMI",
+      "category": "kesehatan",
+      "desc": "Body Mass Index – indeks massa tubuh",
+      "icon": "⚖️",
+      "tags": ["bmi", "berat", "tinggi", "kesehatan"]
+    },
+    {
+      "id": "egfr",
+      "name": "Kalkulator eGFR",
+      "category": "kesehatan",
+      "desc": "Estimasi Laju Filtrasi Glomerulus (fungsi ginjal)",
+      "icon": "🩺",
+      "tags": ["ginjal", "ckd", "kreatinin"]
+    },
+    {
+      "id": "bmr",
+      "name": "Kalkulator BMR / TDEE",
+      "category": "kesehatan",
+      "desc": "Basal Metabolic Rate & Total Daily Energy Expenditure",
+      "icon": "🔥",
+      "tags": ["kalori", "metabolisme", "diet"]
+    },
+    {
+      "id": "dosage",
+      "name": "Kalkulator Dosis Obat",
+      "category": "kesehatan",
+      "desc": "Hitung dosis berdasarkan berat badan (mg/kg)",
+      "icon": "💊",
+      "tags": ["dosis", "farmasi", "obat"]
+    },
+    {
+      "id": "subnet",
+      "name": "IP Subnet Calculator",
+      "category": "it",
+      "desc": "Network, broadcast, usable hosts, CIDR, subnet mask",
+      "icon": "🌐",
+      "tags": ["ip", "cidr", "subnet", "networking"]
+    },
+    {
+      "id": "ohm",
+      "name": "Ohm's Law Calculator",
+      "category": "elektronik",
+      "desc": "Hitung V, I, R, dan Power dari hukum Ohm",
+      "icon": "⚡",
+      "tags": ["ohm", "tegangan", "arus", "resistansi"]
+    },
+    {
+      "id": "led-resistor",
+      "name": "LED Resistor Calculator",
+      "category": "elektronik",
+      "desc": "Hitung resistor pembatas arus untuk LED",
+      "icon": "💡",
+      "tags": ["led", "resistor", "arus"]
+    },
+    {
+      "id": "resistor-color",
+      "name": "Resistor Color Code",
+      "category": "elektronik",
+      "desc": "Decode kode warna resistor 4 & 5 band",
+      "icon": "🎨",
+      "tags": ["resistor", "warna", "kode"]
+    },
+    {
+      "id": "voltage-divider",
+      "name": "Voltage Divider",
+      "category": "elektronik",
+      "desc": "Hitung tegangan keluaran pembagi tegangan",
+      "icon": "📉",
+      "tags": ["divider", "tegangan"]
+    },
+    {
+      "id": "rc-time",
+      "name": "RC Time Constant",
+      "category": "elektronik",
+      "desc": "Hitung konstanta waktu RC (τ = R×C)",
+      "icon": "⏱️",
+      "tags": ["rc", "kapasitor", "waktu"]
+    },
+    {
+      "id": "gear-ratio",
+      "name": "Gear Ratio Calculator",
+      "category": "otomotif",
+      "desc": "Rasio gigi, RPM vs kecepatan, final drive",
+      "icon": "⚙️",
+      "tags": ["gear", "rasio", "rpm", "transmisi"]
+    },
+    {
+      "id": "hp-torque",
+      "name": "Horsepower & Torque",
+      "category": "otomotif",
+      "desc": "Konversi HP ↔ Torque dari RPM",
+      "icon": "🏎️",
+      "tags": ["hp", "torque", "daya"]
+    },
+    {
+      "id": "fuel-economy",
+      "name": "Fuel Economy",
+      "category": "otomotif",
+      "desc": "Hitung konsumsi BBM (km/L atau L/100km)",
+      "icon": "⛽",
+      "tags": ["bbm", "konsumsi", "efisiensi"]
+    },
+    {
+      "id": "kinematics",
+      "name": "Kinematics Calculator",
+      "category": "fisika",
+      "desc": "Gerak lurus beraturan & berubah beraturan",
+      "icon": "📐",
+      "tags": ["gerak", "percepatan", "kecepatan"]
+    },
+    {
+      "id": "projectile",
+      "name": "Projectile Motion",
+      "category": "fisika",
+      "desc": "Gerak parabola: jangkauan, tinggi maks, waktu",
+      "icon": "🎯",
+      "tags": ["parabola", "proyektil", "gerak"]
+    },
+    {
+      "id": "free-fall",
+      "name": "Free Fall Calculator",
+      "category": "fisika",
+      "desc": "Jatuh bebas: kecepatan, jarak, waktu",
+      "icon": "🪂",
+      "tags": ["jatuh", "gravitasi", "bebas"]
+    },
+    {
+      "id": "delta-v",
+      "name": "Delta-V / Rocket Equation",
+      "category": "antariksa",
+      "desc": "Persamaan roket Tsiolkovsky – delta-v",
+      "icon": "🚀",
+      "tags": ["roket", "delta-v", "tsiolkovsky"]
+    },
+    {
+      "id": "orbital",
+      "name": "Orbital Mechanics",
+      "category": "antariksa",
+      "desc": "Kecepatan orbit, periode, escape velocity",
+      "icon": "🌍",
+      "tags": ["orbit", "satelit", "kecepatan"]
+    },
+    {
+      "id": "npv",
+      "name": "NPV Calculator",
+      "category": "keuangan",
+      "desc": "Net Present Value – evaluasi investasi",
+      "icon": "📈",
+      "tags": ["npv", "investasi", "keuangan"]
+    },
+    {
+      "id": "loan",
+      "name": "Kalkulator Pinjaman / EMI",
+      "category": "keuangan",
+      "desc": "Angsuran bulanan, bunga, total pembayaran",
+      "icon": "🏦",
+      "tags": ["pinjaman", "kredit", "emi", "cicilan"]
+    },
+    {
+      "id": "compound",
+      "name": "Bunga Majemuk",
+      "category": "keuangan",
+      "desc": "Compound Interest – pertumbuhan investasi",
+      "icon": "💹",
+      "tags": ["bunga", "compound", "investasi"]
+    },
+    {
+      "id": "roi",
+      "name": "ROI Calculator",
+      "category": "keuangan",
+      "desc": "Return on Investment & ROAS",
+      "icon": "📊",
+      "tags": ["roi", "return", "profit"]
+    },
+    {
+      "id": "break-even",
+      "name": "Break-Even Point",
+      "category": "keuangan",
+      "desc": "Titik impas penjualan",
+      "icon": "⚖️",
+      "tags": ["bep", "impas", "bisnis"]
+    },
+    {
+      "id": "percentage-business",
+      "name": "Margin & Markup",
+      "category": "keuangan",
+      "desc": "Hitung margin keuntungan dan markup",
+      "icon": "🏷️",
+      "tags": ["margin", "markup", "harga"]
+    },
+    {
+      "id": "unit-converter",
+      "name": "Unit Converter",
+      "category": "umum",
+      "desc": "Konversi panjang, berat, suhu, volume, dll",
+      "icon": "🔄",
+      "tags": ["konversi", "satuan", "unit"]
+    },
+    {
+      "id": "date-diff",
+      "name": "Selisih Tanggal",
+      "category": "umum",
+      "desc": "Hitung selisih hari antara dua tanggal",
+      "icon": "📅",
+      "tags": ["tanggal", "hari", "selisih"]
+    },
+    {
+      "id": "age",
+      "name": "Kalkulator Usia",
+      "category": "umum",
+      "desc": "Hitung usia tepat dari tanggal lahir",
+      "icon": "🎂",
+      "tags": ["usia", "umur", "lahir"]
+    }
+  ]
+}
